@@ -18,7 +18,7 @@ app.get('/',(req, res)=>{
     res.send("hello express")
 })
 
-MONGO_URI ='mongodb://0.0.0.0:27017/Stock_Tracker'
+MONGO_URI ='mongodb://0.0.0.0:27017/StockTracker'
 mongoose.connect(MONGO_URI)
   .then(() => console.log('Connected Database!'))
   .catch((error)=>{
