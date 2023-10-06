@@ -18,12 +18,20 @@ app.get('/',(req, res)=>{
     res.send("hello express")
 })
 
-MONGO_URI ='mongodb://0.0.0.0:27017/StockTracker'
-mongoose.connect(MONGO_URI,{ useNewUrlParser: true, useUnifiedTopology: true }  )
-  .then(() => console.log('Connected Database!'))
-  .catch((error)=>{
-    console.log(`mongoDb Not connected ${error}`)
+
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
+  .then(() => {
+    console.log('MongoDB has been started successfully');
+  })
+  .catch((err) => {
+    console.error('Error connecting to MongoDB:', err);
+  });
+
+
   app.use('/', stockRouter);
 
 app.listen(4000,()=>{
