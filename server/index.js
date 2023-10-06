@@ -18,8 +18,8 @@ app.get('/',(req, res)=>{
     res.send("hello express")
 })
 
-
-mongoose.connect(process.env.MONGO_URI)
+MONGO_URI ='mongodb://0.0.0.0:27017/Stock_Tracker'
+mongoose.connect(MONGO_URI)
   .then(() => console.log('Connected Database!'))
   .catch((error)=>{
     console.log(`mongoDb Not connected ${error}`)
