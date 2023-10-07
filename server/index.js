@@ -20,7 +20,7 @@ app.get('/',(req, res)=>{
 
 
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect('mongodb://0.0.0.0:27017/Stock_Tracker', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -30,7 +30,6 @@ mongoose
   .catch((err) => {
     console.error('Error connecting to MongoDB:', err);
   });
-
 
   app.use('/', stockRouter);
 
