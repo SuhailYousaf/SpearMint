@@ -19,8 +19,9 @@ app.get('/',(req, res)=>{
 })
 
 
+
 mongoose
-  .connect('mongodb://0.0.0.0:27017/Stock_Tracker', {
+  .connect(process.env.MONGOURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -30,6 +31,7 @@ mongoose
   .catch((err) => {
     console.error('Error connecting to MongoDB:', err);
   });
+
 
   app.use('/', stockRouter);
 
